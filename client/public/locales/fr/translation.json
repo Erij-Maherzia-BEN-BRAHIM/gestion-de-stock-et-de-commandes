@@ -29,6 +29,7 @@
     "page": {
         "clients": {
             "list": "Liste des clients",
+            "fetch":"Les données sont en cours de chargement... veuillez patienter",
             "form":{
                 "add":"Ajouter un client",
                 "name":"Nom Complet du Client",

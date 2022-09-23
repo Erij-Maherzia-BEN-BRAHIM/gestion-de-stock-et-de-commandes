@@ -29,6 +29,8 @@
     "page": {
         "clients": {
             "list": "List Of Customers",
+            "fetch":"Data is loading, Please wait...",
+
             "form":{
                 "add":"Add New Customer",
                 "name":"Full Name",

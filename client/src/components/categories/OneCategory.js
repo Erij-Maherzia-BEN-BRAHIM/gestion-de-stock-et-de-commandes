@@ -1,12 +1,14 @@
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Typography from "@mui/material/Typography";
-import React, { useContext, useRef } from "react";
+import React, { useRef } from "react";
 import { AiFillDropboxCircle } from "react-icons/ai";
 import { FaEdit, FaInfoCircle, FaTrash } from "react-icons/fa";
-import { categorieCtx } from "../../store/categoryContext";
-import swal from "sweetalert";
+//import { categorieCtx } from "../../store/categoryContext";
 import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
+import swal from "sweetalert";
+import { DeleteCategory, selectCategorie, UpdateCategory } from "../../features/category/categorySlice";
 
 const _ = require("lodash");
 
@@ -27,17 +29,24 @@ export default function OneCategory(props) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  let ctx = useContext(categorieCtx);
+  const dispatch = useDispatch()
+  const TabCategories = useSelector(selectCategorie)
+
+/*   useEffect(()=>{
+    dispatch(GetCategoryById(props.categorie._id))
+  }, []) */
+  //let ctx = useContext(categorieCtx);
   function removeC() {
     swal({
       title: "Suppression",
       text: "Etes-vous sur de bien vouloir supprimer cette catégorie?",
       icon: "warning",
-      buttons: ["{t('buttons.cancel')}", "{t('buttons.delete')}"],
+      buttons: [t('buttons.cancel'), t('buttons.delete')],
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        ctx.removeOneCategorie(props.categorie._id);
+        dispatch(DeleteCategory(props.categorie._id))
+        //ctx.removeOneCategorie(props.categorie._id);
         swal("Catégorie supprimée avec succès", {
           icon: "success",
         });
@@ -52,7 +61,7 @@ export default function OneCategory(props) {
     // if (window.confirm('Etes-vous sur de bien vouloir supprimer cette catégorie ? Sachant que tous les produits y inclus seront supprimés ainsi'))
   }
 
-  const tabNotFiltred = _.map(ctx.tabCategories, "name");
+  const tabNotFiltred = _.map(TabCategories, "name");
   console.log(tabNotFiltred);
   const refName = useRef("");
 
@@ -68,17 +77,18 @@ export default function OneCategory(props) {
         icon: "error",
       });
     } else {
-      ctx.updateCategorie(props.categorie._id, uCategory);
+      dispatch(UpdateCategory(props.categorie._id , uCategory))
+      //ctx.updateCategorie(props.categorie._id, uCategory);
       swal({
         title: "Opération réussie!",
         text: "La catégorie a été bien mise à jour!",
         icon: "success",
       });
-      e.target.reset();
-      window.location.reload();
+     e.target.reset();
+      window.location.reload(); 
     }
   }
-  //if (tabCommandes){
+
   return (
     <>
       <div className="row mb-1 mr-0 custom-border ">
@@ -134,10 +144,3 @@ export default function OneCategory(props) {
     </>
   );
 }
-/* } else{
-  return(
-    <div className="fetching">      
-    <FaSpinner className="spinner"></FaSpinner>
-          </div> 
-  )
-} */

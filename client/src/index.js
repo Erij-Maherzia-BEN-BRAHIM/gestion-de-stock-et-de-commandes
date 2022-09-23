@@ -2,7 +2,7 @@ import { StyledEngineProvider } from "@mui/material/styles";
 import "bootstrap/dist/css/bootstrap.min.css";
 import * as React from "react";
 import ReactDOM from "react-dom/client";
-import './i18n';
+import "./i18n";
 import "./index.css";
 //import 'font-awesome/css/font-awesome.min.css';
 //import "bootstrap-icons/font/bootstrap-icons.css";
@@ -27,7 +27,8 @@ import AddNewProduitContextProvider from "./store/produitContext";
 import UserContextProvider from "./store/userContext";
 import VenteAvoirContextProvider from "./store/venteAvoirContext";
 import AddNewVenteFactContextProvider from "./store/venteFactContext";
-
+import { store } from "./store_Redux/store";
+import { Provider } from "react-redux";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
@@ -49,11 +50,13 @@ root.render(
                                   <AddNewCategorieContextProvider>
                                     <UserContextProvider>
                                       <LoginContextProvider>
-                                      <Suspense fallback="loading">
-                                        <StyledEngineProvider injectFirst>
-                                          <App />
-                                        </StyledEngineProvider>
-                                        </Suspense>,
+                                          <Suspense fallback="loading">
+                                        <Provider store={store}>
+                                            <StyledEngineProvider injectFirst>
+                                              <App />
+                                            </StyledEngineProvider>
+                                        </Provider>
+                                          </Suspense>
                                       </LoginContextProvider>
                                     </UserContextProvider>
                                   </AddNewCategorieContextProvider>

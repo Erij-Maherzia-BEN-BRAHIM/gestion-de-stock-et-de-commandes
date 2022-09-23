@@ -4,10 +4,13 @@ import { FaBan, FaSave, FaSpinner } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../../store/userContext";
 import swal from "sweetalert";
+import { useTranslation } from "react-i18next";
 
 const _ = require("lodash");
 
 export default function RegisterForm() {
+  const { t } = useTranslation();
+
   let navigate = useNavigate();
   let refemail = useRef("");
   let refrole = useRef("");

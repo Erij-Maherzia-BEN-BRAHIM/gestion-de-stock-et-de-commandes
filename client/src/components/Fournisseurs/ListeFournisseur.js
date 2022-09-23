@@ -23,8 +23,7 @@ export default function ListeFournisseur() {
       <div>
         <div className="row d-flex">
           <h6 className="col-md-9 flex-fill display-4">
-            Liste des fournisseurs
-          </h6>
+          {t('page.fournisseurs.list')}          </h6>
 
           <div className="col-md-2">
             <Link to="/addFournisseur" className="btn bg-blue m-4 p-2">

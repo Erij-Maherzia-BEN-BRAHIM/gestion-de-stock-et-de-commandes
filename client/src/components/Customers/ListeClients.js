@@ -49,7 +49,7 @@ export default function ListeClients() {
     return (
       <div>
         <div className="text-success display-6">
-          Les données sont en cours de chargement... veuillez patienter !
+        {t('page.clients.fetch')}
           <div className="fetching">
             <FaSpinner className="spinner"></FaSpinner>
           </div>
