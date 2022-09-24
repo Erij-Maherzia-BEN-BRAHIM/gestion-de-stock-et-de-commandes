@@ -4,7 +4,6 @@ import Typography from "@mui/material/Typography";
 import React, { useRef } from "react";
 import { AiFillDropboxCircle } from "react-icons/ai";
 import { FaEdit, FaInfoCircle, FaTrash } from "react-icons/fa";
-//import { categorieCtx } from "../../store/categoryContext";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import swal from "sweetalert";
@@ -23,7 +22,7 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
-export default function OneCategory(props) {
+export default function OneCategory({categorie}) {
   const { t } = useTranslation();
 
   const [open, setOpen] = React.useState(false);
@@ -32,10 +31,6 @@ export default function OneCategory(props) {
   const dispatch = useDispatch()
   const TabCategories = useSelector(selectCategorie)
 
-/*   useEffect(()=>{
-    dispatch(GetCategoryById(props.categorie._id))
-  }, []) */
-  //let ctx = useContext(categorieCtx);
   function removeC() {
     swal({
       title: "Suppression",
@@ -45,7 +40,7 @@ export default function OneCategory(props) {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        dispatch(DeleteCategory(props.categorie._id))
+        dispatch(DeleteCategory(categorie._id))
         //ctx.removeOneCategorie(props.categorie._id);
         swal("Catégorie supprimée avec succès", {
           icon: "success",
@@ -58,7 +53,6 @@ export default function OneCategory(props) {
       }
     });
 
-    // if (window.confirm('Etes-vous sur de bien vouloir supprimer cette catégorie ? Sachant que tous les produits y inclus seront supprimés ainsi'))
   }
 
   const tabNotFiltred = _.map(TabCategories, "name");
@@ -77,7 +71,11 @@ export default function OneCategory(props) {
         icon: "error",
       });
     } else {
-      dispatch(UpdateCategory(props.categorie._id , uCategory))
+      let data = {
+        id:categorie._id ,
+        data: uCategory
+      }
+      dispatch(UpdateCategory(data))
       //ctx.updateCategorie(props.categorie._id, uCategory);
       swal({
         title: "Opération réussie!",
@@ -94,11 +92,11 @@ export default function OneCategory(props) {
       <div className="row mb-1 mr-0 custom-border ">
         <div className="col-md-6 custom-border-right py-3  text-left">
           <div>
-            <FaInfoCircle></FaInfoCircle> Libellé: {props.categorie.name}
+            <FaInfoCircle></FaInfoCircle> Libellé: {categorie.name}
           </div>
           <div>
             <AiFillDropboxCircle></AiFillDropboxCircle> Nombre de produits:{" "}
-            {props.categorie.nb_produits}
+            {categorie.nb_produits}
           </div>
         </div>
         <div className="col-md-3 custom-border-right py-4 text-center">
@@ -131,7 +129,7 @@ export default function OneCategory(props) {
               className="form-control"
               type="text"
               name="name"
-              defaultValue={props.categorie.name}
+              defaultValue={categorie.name}
               ref={refName}
             ></input>
 

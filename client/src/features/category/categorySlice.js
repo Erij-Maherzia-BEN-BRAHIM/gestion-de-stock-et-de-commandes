@@ -18,8 +18,8 @@ export const CreateCategory = createAsyncThunk(
 )
 export const UpdateCategory = createAsyncThunk(
     'categories/updateCategory',
-    async (id, data)=>{
-        const response = await updateCategory(id , data);
+    async (data)=>{
+        const response = await updateCategory(data);
         return response.data
     }
 )
@@ -104,20 +104,11 @@ export const categorySlice = createSlice({
                 state.updateCategory= 'loading'
             })
             .addCase(UpdateCategory.fulfilled, (state, action)=>{
-                if (action.payload.data = 200) {
 
-                    const index = state.allCategories.findIndex(categories => categories._id === action.payload.data._id);
-                    state.allCategories[index] = {
-                      ...state.allCategories[index],
-                      ...action.payload.data,
-                    }
-                
+            console.log("update category payload",action.payload)
+                state.updateCategory='success'
                     
-                  }
-          
-                  else {
-                    state.updateCategory = 'failure'
-                  }
+              
                 })
             .addCase(UpdateCategory.rejected, (state, action)=>{
                 state.updateCategory = 'failure'

@@ -9,9 +9,9 @@ export async function createCategory(values){
         return err;
     }
 }
-export async function updateCategory(id , categoryInfos){
+export async function updateCategory(data){
     try {
-        const res = await axios.put(requests.categoriesAPI +"/"+ id, categoryInfos);
+        const res = await axios.put(requests.categoriesAPI +"/"+ data.id, data.data);
         return res;
     } catch (err) {
         return err;
