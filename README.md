@@ -61,28 +61,10 @@ $ nodemon
 ```
 $ npm start
 ```
-7. To have access to the application, you can use these credentials :
+7. To have access to the application, you can use these credentials to test the admin interface:
 ```
-- To test the admin interface
-email: admin@gmail.com
-password: azerty
-- To test the "directeur_direction" interface
-email: directeur_direction@gmail.com
-password: azerty
-- To test the "magasinier_appro" interface
-email: magasinier_appro@gmail.com
-password: azerty
-- To test the "magasinier_bati" interface
-email: magasinier_bati@gmail.com
-password: azerty
-- To test the "employe" interface
-email: employe@gmail.com
-password: azerty
-- To test the "chef_serv_vente" interface
-email: chef_serv_vente@gmail.com
-password: azerty
-- To test the "chef_serv_achat" interface
-email: chef_serv_achat@gmail.com
+
+email: admin@test.com
 password: azerty
 ```
 ## Requirements
