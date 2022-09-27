@@ -21,7 +21,7 @@ Nodes Storage Manager is a web application mainly for stock and order management
    - Manage ordinary sales invoices
    - Manage sales credit invoices
    - Track the payment of sales invoices
-  - Consult the dashboard
+- Consult the dashboard
 
 ## Demo
 
