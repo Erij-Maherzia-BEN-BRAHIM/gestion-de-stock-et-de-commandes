@@ -28,11 +28,13 @@ Nodes Storage Manager is a web application mainly for stock and order management
 [<img src="https://user-images.githubusercontent.com/101833103/192482492-3076665f-ec80-4c5d-ae15-0135f10ecc5e.png" width="500px">](https://drive.google.com/file/d/1NSIhyfOvKqaldXwgokX14CXLWeA6A_EA/view?usp=sharing "Nodes Storage Manager Demo")
 
 
-## Built With
+## Technologies
 
-This project was bootstrapped mainly with the MERN Stack :
-
-<img src="https://user-images.githubusercontent.com/101833103/192472722-246914c6-45d9-4c99-bf26-69075816d4c0.png" width="500px">
+- [Create React App](https://github.com/facebook/create-react-app)
+- [Redux](https://redux.js.org/) 
+- [Redux Toolkit](https://redux-toolkit.js.org/) 
+- [Express](https://expressjs.com/) 
+- [Node.Js](https://nodejs.org/en/) 
 
 ## Start the project
 
@@ -49,15 +51,46 @@ $ npm install
 cd client
 $ npm install
 ```
-3. From the backend directory, you need to rename the .env.example file by .env and replace CLOUD_NAME, CLOUD_KEY , CLOUD_KEY_SECRET and DATABASE and then start the server:
+3. Create an account in [Cloudinary](https://cloudinary.com/users/register_free)
+4. From the backend directory, you need to rename the .env.example file by .env and replace CLOUD_NAME, CLOUD_KEY , CLOUD_KEY_SECRET by your Cloudinary account data.
+5. From the backend directory, run the server :
 ```
 $ nodemon
 ```
-4. From the client directory enter :
+6. From the client directory enter :
 ```
 $ npm start
 ```
+7. To have access to the application, you can use these credentials :
+```
+- To test the admin interface
+email: admin@gmail.com
+password: azerty
+- To test the "directeur_direction" interface
+email: directeur_direction@gmail.com
+password: azerty
+- To test the "magasinier_appro" interface
+email: magasinier_appro@gmail.com
+password: azerty
+- To test the "magasinier_bati" interface
+email: magasinier_bati@gmail.com
+password: azerty
+- To test the "employe" interface
+email: employe@gmail.com
+password: azerty
+- To test the "chef_serv_vente" interface
+email: chef_serv_vente@gmail.com
+password: azerty
+- To test the "chef_serv_achat" interface
+email: chef_serv_achat@gmail.com
+password: azerty
+```
 ## Requirements
-
-You need to have installed [Node.Js](https://nodejs.org/en/) and [Git](https://git-scm.com/) .
-
+You need to have an account in [Cloudinary](https://cloudinary.com/users/register_free) and you need also to have installed [Node.Js](https://nodejs.org/en/) (v16.13.0.) and [Git](https://git-scm.com/) .
+```
+{
+  "engines": {
+    "node": ">=0.13.0 <16"
+  }
+}
+```
