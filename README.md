@@ -90,7 +90,9 @@ You need to have an account in [Cloudinary](https://cloudinary.com/users/registe
 ```
 {
   "engines": {
-    "node": ">=0.13.0 <16"
+    "node": ">=0.13.0 <16",
+    "react": ">=0.2.0 <18",
+    "react-router-dom": ">=0.3.0 <6"
   }
 }
 ```
